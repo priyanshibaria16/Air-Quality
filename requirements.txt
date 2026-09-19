@@ -1,0 +1,41 @@
+# Air Quality & Pollution Intelligence - Python dependencies
+#
+# Tested with Python 3.11.9 on Windows, using the exact versions listed in the
+# "verified with" comment next to each entry. Minimum bounds are given so the
+# project also installs on a machine with a newer patch release; pin these with
+# `pip freeze > requirements.lock.txt` if you need a byte-identical environment.
+#
+# Install:
+#   python -m venv .venv
+#   .venv\Scripts\activate          (Windows)   |   source .venv/bin/activate (Linux/macOS)
+#   pip install -r requirements.txt
+
+# --- Data handling ----------------------------------------------------------
+pandas>=2.2            # verified with 3.0.6  (code is schema-adaptive, see src/config.py)
+numpy>=1.26            # verified with 2.4.6
+openpyxl>=3.1          # verified with 3.1.5  (Excel export of processed tables)
+
+# --- Statistics and machine learning ----------------------------------------
+scipy>=1.11            # verified with 1.17.1 (Shapiro, KS, ANOVA, Kruskal, chi-square)
+scikit-learn>=1.4      # verified with 1.9.1  (K-Means, Isolation Forest, classifiers)
+
+# --- Visualisation ----------------------------------------------------------
+matplotlib>=3.8        # verified with 3.11.2
+seaborn>=0.13          # verified with 0.13.2
+
+# --- Notebooks --------------------------------------------------------------
+jupyter>=1.0           # verified with 1.1.1
+notebook>=7.0          # verified with 7.6.2
+ipykernel>=6.29        # verified with 7.3.0
+nbformat>=5.9          # verified with 5.11.1 (notebook generation, tools/build_notebooks.py)
+nbclient>=0.9          # verified with 0.11.0 (headless execution, tools/run_notebooks.py)
+
+# --- Reporting (academic report, slides, workbook) --------------------------
+python-docx>=1.1       # verified with 1.2.0
+python-pptx>=1.0       # verified with 1.0.2
+XlsxWriter>=3.1        # verified with 3.2.9
+
+# --- Not required -----------------------------------------------------------
+# Power BI Desktop is a separate free download (https://powerbi.microsoft.com).
+# The dashboard consumes the CSV files in data/processed/ only; no Python
+# connector (pbi / tabulate etc.) is needed.

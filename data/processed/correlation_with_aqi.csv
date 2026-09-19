@@ -1,0 +1,10 @@
+Variable,n,Pearson_r,Pearson_p,Spearman_rho,Spearman_p,r^2,Strength,Direction,Significant_at_0.05
+PM10,18265,0.2296,4.49e-217,0.2313,2.05e-220,0.0527,weak,positive,True
+O3,18265,0.062,5.27e-17,0.057,1.22e-14,0.0038,negligible,positive,True
+CO,18265,0.0299,5.31e-05,0.0284,0.000127,0.0009,negligible,positive,True
+NO2,18265,0.0099,0.18,0.0064,0.386,0.0001,negligible,positive,False
+PM2.5,18265,-0.0097,0.188,0.0085,0.249,0.0001,negligible,negative,False
+NOx,18265,-0.0079,0.283,-0.0092,0.213,0.0001,negligible,negative,False
+NO,18265,0.0026,0.723,0.0027,0.717,0.0,negligible,positive,False
+SO2,18265,0.0011,0.878,0.0007,0.923,0.0,negligible,positive,False
+NH3,18265,0.0005,0.942,-0.0002,0.983,0.0,negligible,positive,False

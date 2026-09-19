@@ -1,0 +1,11 @@
+Metric,Before Cleaning,After Cleaning
+Total Rows,18265,18265
+Total Columns,13,22
+Duplicate Rows,0,0
+Total Missing Values,0,0
+Columns With Missing,0,0
+Unique Cities,5,5
+Date Start,2015-01-01,2015-01-01
+Date End,2024-12-31,2024-12-31
+Numerical Columns,10,19
+Categorical Columns,3,3

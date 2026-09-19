@@ -1,0 +1,17 @@
+{
+  "Total Rows": 18265,
+  "Total Columns": 13,
+  "Duplicate Rows": 0,
+  "Total Missing Values": 0,
+  "Columns With Missing": 0,
+  "Unique Cities": 5,
+  "Date Column": "Datetime",
+  "Date Start": "2015-01-01",
+  "Date End": "2024-12-31",
+  "Numerical Columns": 10,
+  "Categorical Columns": 3,
+  "Pollutant Columns Detected": 9,
+  "Pollutants": "PM2.5, PM10, NO, NO2, NOx, NH3, CO, SO2, O3",
+  "AQI Column Present": "True",
+  "AQI_Bucket Column Present": "True"
+}

@@ -1,0 +1,181 @@
+Actual,Predicted,Count,Model
+Good,Good,0,Baseline (prior)
+Moderate,Good,0,Baseline (prior)
+Poor,Good,0,Baseline (prior)
+Satisfactory,Good,0,Baseline (prior)
+Severe,Good,0,Baseline (prior)
+Very Poor,Good,0,Baseline (prior)
+Good,Moderate,0,Baseline (prior)
+Moderate,Moderate,0,Baseline (prior)
+Poor,Moderate,0,Baseline (prior)
+Satisfactory,Moderate,0,Baseline (prior)
+Severe,Moderate,0,Baseline (prior)
+Very Poor,Moderate,0,Baseline (prior)
+Good,Poor,0,Baseline (prior)
+Moderate,Poor,0,Baseline (prior)
+Poor,Poor,0,Baseline (prior)
+Satisfactory,Poor,0,Baseline (prior)
+Severe,Poor,0,Baseline (prior)
+Very Poor,Poor,0,Baseline (prior)
+Good,Satisfactory,0,Baseline (prior)
+Moderate,Satisfactory,0,Baseline (prior)
+Poor,Satisfactory,0,Baseline (prior)
+Satisfactory,Satisfactory,0,Baseline (prior)
+Severe,Satisfactory,0,Baseline (prior)
+Very Poor,Satisfactory,0,Baseline (prior)
+Good,Severe,0,Baseline (prior)
+Moderate,Severe,0,Baseline (prior)
+Poor,Severe,0,Baseline (prior)
+Satisfactory,Severe,0,Baseline (prior)
+Severe,Severe,0,Baseline (prior)
+Very Poor,Severe,0,Baseline (prior)
+Good,Very Poor,2,Baseline (prior)
+Moderate,Very Poor,1065,Baseline (prior)
+Poor,Very Poor,782,Baseline (prior)
+Satisfactory,Very Poor,28,Baseline (prior)
+Severe,Very Poor,1315,Baseline (prior)
+Very Poor,Very Poor,1375,Baseline (prior)
+Good,Good,2,Logistic Regression
+Moderate,Good,11,Logistic Regression
+Poor,Good,2,Logistic Regression
+Satisfactory,Good,4,Logistic Regression
+Severe,Good,8,Logistic Regression
+Very Poor,Good,13,Logistic Regression
+Good,Moderate,0,Logistic Regression
+Moderate,Moderate,412,Logistic Regression
+Poor,Moderate,136,Logistic Regression
+Satisfactory,Moderate,0,Logistic Regression
+Severe,Moderate,300,Logistic Regression
+Very Poor,Moderate,277,Logistic Regression
+Good,Poor,0,Logistic Regression
+Moderate,Poor,108,Logistic Regression
+Poor,Poor,295,Logistic Regression
+Satisfactory,Poor,1,Logistic Regression
+Severe,Poor,285,Logistic Regression
+Very Poor,Poor,434,Logistic Regression
+Good,Satisfactory,0,Logistic Regression
+Moderate,Satisfactory,99,Logistic Regression
+Poor,Satisfactory,69,Logistic Regression
+Satisfactory,Satisfactory,21,Logistic Regression
+Severe,Satisfactory,143,Logistic Regression
+Very Poor,Satisfactory,121,Logistic Regression
+Good,Severe,0,Logistic Regression
+Moderate,Severe,160,Logistic Regression
+Poor,Severe,120,Logistic Regression
+Satisfactory,Severe,0,Logistic Regression
+Severe,Severe,451,Logistic Regression
+Very Poor,Severe,270,Logistic Regression
+Good,Very Poor,0,Logistic Regression
+Moderate,Very Poor,275,Logistic Regression
+Poor,Very Poor,160,Logistic Regression
+Satisfactory,Very Poor,2,Logistic Regression
+Severe,Very Poor,128,Logistic Regression
+Very Poor,Very Poor,260,Logistic Regression
+Good,Good,0,Decision Tree
+Moderate,Good,0,Decision Tree
+Poor,Good,1,Decision Tree
+Satisfactory,Good,0,Decision Tree
+Severe,Good,0,Decision Tree
+Very Poor,Good,2,Decision Tree
+Good,Moderate,0,Decision Tree
+Moderate,Moderate,1022,Decision Tree
+Poor,Moderate,17,Decision Tree
+Satisfactory,Moderate,0,Decision Tree
+Severe,Moderate,16,Decision Tree
+Very Poor,Moderate,10,Decision Tree
+Good,Poor,0,Decision Tree
+Moderate,Poor,14,Decision Tree
+Poor,Poor,747,Decision Tree
+Satisfactory,Poor,2,Decision Tree
+Severe,Poor,16,Decision Tree
+Very Poor,Poor,32,Decision Tree
+Good,Satisfactory,2,Decision Tree
+Moderate,Satisfactory,14,Decision Tree
+Poor,Satisfactory,10,Decision Tree
+Satisfactory,Satisfactory,25,Decision Tree
+Severe,Satisfactory,15,Decision Tree
+Very Poor,Satisfactory,11,Decision Tree
+Good,Severe,0,Decision Tree
+Moderate,Severe,6,Decision Tree
+Poor,Severe,1,Decision Tree
+Satisfactory,Severe,1,Decision Tree
+Severe,Severe,1242,Decision Tree
+Very Poor,Severe,20,Decision Tree
+Good,Very Poor,0,Decision Tree
+Moderate,Very Poor,9,Decision Tree
+Poor,Very Poor,6,Decision Tree
+Satisfactory,Very Poor,0,Decision Tree
+Severe,Very Poor,26,Decision Tree
+Very Poor,Very Poor,1300,Decision Tree
+Good,Good,0,Random Forest
+Moderate,Good,0,Random Forest
+Poor,Good,0,Random Forest
+Satisfactory,Good,0,Random Forest
+Severe,Good,0,Random Forest
+Very Poor,Good,0,Random Forest
+Good,Moderate,1,Random Forest
+Moderate,Moderate,1054,Random Forest
+Poor,Moderate,1,Random Forest
+Satisfactory,Moderate,12,Random Forest
+Severe,Moderate,0,Random Forest
+Very Poor,Moderate,0,Random Forest
+Good,Poor,0,Random Forest
+Moderate,Poor,1,Random Forest
+Poor,Poor,780,Random Forest
+Satisfactory,Poor,0,Random Forest
+Severe,Poor,0,Random Forest
+Very Poor,Poor,4,Random Forest
+Good,Satisfactory,1,Random Forest
+Moderate,Satisfactory,0,Random Forest
+Poor,Satisfactory,0,Random Forest
+Satisfactory,Satisfactory,15,Random Forest
+Severe,Satisfactory,0,Random Forest
+Very Poor,Satisfactory,0,Random Forest
+Good,Severe,0,Random Forest
+Moderate,Severe,4,Random Forest
+Poor,Severe,1,Random Forest
+Satisfactory,Severe,1,Random Forest
+Severe,Severe,1315,Random Forest
+Very Poor,Severe,1,Random Forest
+Good,Very Poor,0,Random Forest
+Moderate,Very Poor,6,Random Forest
+Poor,Very Poor,0,Random Forest
+Satisfactory,Very Poor,0,Random Forest
+Severe,Very Poor,0,Random Forest
+Very Poor,Very Poor,1370,Random Forest
+Good,Good,0,Hist Gradient Boosting
+Moderate,Good,0,Hist Gradient Boosting
+Poor,Good,0,Hist Gradient Boosting
+Satisfactory,Good,0,Hist Gradient Boosting
+Severe,Good,0,Hist Gradient Boosting
+Very Poor,Good,0,Hist Gradient Boosting
+Good,Moderate,2,Hist Gradient Boosting
+Moderate,Moderate,938,Hist Gradient Boosting
+Poor,Moderate,22,Hist Gradient Boosting
+Satisfactory,Moderate,9,Hist Gradient Boosting
+Severe,Moderate,22,Hist Gradient Boosting
+Very Poor,Moderate,21,Hist Gradient Boosting
+Good,Poor,0,Hist Gradient Boosting
+Moderate,Poor,23,Hist Gradient Boosting
+Poor,Poor,697,Hist Gradient Boosting
+Satisfactory,Poor,4,Hist Gradient Boosting
+Severe,Poor,19,Hist Gradient Boosting
+Very Poor,Poor,29,Hist Gradient Boosting
+Good,Satisfactory,0,Hist Gradient Boosting
+Moderate,Satisfactory,22,Hist Gradient Boosting
+Poor,Satisfactory,18,Hist Gradient Boosting
+Satisfactory,Satisfactory,6,Hist Gradient Boosting
+Severe,Satisfactory,12,Hist Gradient Boosting
+Very Poor,Satisfactory,19,Hist Gradient Boosting
+Good,Severe,0,Hist Gradient Boosting
+Moderate,Severe,40,Hist Gradient Boosting
+Poor,Severe,16,Hist Gradient Boosting
+Satisfactory,Severe,1,Hist Gradient Boosting
+Severe,Severe,1186,Hist Gradient Boosting
+Very Poor,Severe,37,Hist Gradient Boosting
+Good,Very Poor,0,Hist Gradient Boosting
+Moderate,Very Poor,42,Hist Gradient Boosting
+Poor,Very Poor,29,Hist Gradient Boosting
+Satisfactory,Very Poor,8,Hist Gradient Boosting
+Severe,Very Poor,76,Hist Gradient Boosting
+Very Poor,Very Poor,1269,Hist Gradient Boosting

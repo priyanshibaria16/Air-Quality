@@ -1,0 +1,3 @@
+Cluster,Size,Relative_Position (1 = highest),Neutral_Description
+0,9112,"PM2.5: rank 1, PM10: rank 1, NO: rank 1, NO2: rank 2",highest average PM2.5 among clusters
+1,9153,"PM2.5: rank 2, PM10: rank 2, NO: rank 2, NO2: rank 1",lowest average PM2.5 among clusters

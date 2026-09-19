@@ -1,0 +1,6 @@
+Model,Accuracy_%,Precision_macro,Recall_macro,F1_macro,Precision_weighted,F1_weighted,Lift_over_Baseline_pp,CV_Folds,CV_Accuracy_%,CV_Std_pp
+Random Forest,99.28,0.8181,0.7532,0.7765,0.9922,0.9921,69.17,3,99.17,0.17
+Decision Tree,94.94,0.6921,0.7829,0.7153,0.9569,0.9522,64.83,3,94.78,0.38
+Hist Gradient Boosting,89.69,0.6206,0.6352,0.6224,0.9059,0.9009,59.58,3,90.51,4.27
+Logistic Regression,31.55,0.2485,0.5077,0.2491,0.3553,0.3247,1.44,3,31.95,0.64
+Baseline (prior),30.11,0.0502,0.1667,0.0771,0.0906,0.1393,0.0,3,30.12,0.01

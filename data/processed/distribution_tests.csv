@@ -1,0 +1,11 @@
+Variable,Shapiro_W,Shapiro_p,KS_vs_uniform_D,KS_vs_uniform_p,Skewness,Excess_Kurtosis,Observed_Range,Interpretation
+PM2.5,0.9529,2.21e-37,0.0063,0.461,-0.005,-1.208,0 to 499.9,not normal; uniform-like; flat/uniform shape (kurtosis ~ -1.2)
+PM10,0.957,4.52e-36,0.006,0.515,0.005,-1.199,0 to 600,not normal; uniform-like; flat/uniform shape (kurtosis ~ -1.2)
+NO,0.9567,3.61e-36,0.006,0.523,-0.005,-1.203,0 to 200,not normal; uniform-like; flat/uniform shape (kurtosis ~ -1.2)
+NO2,0.954,4.8e-37,0.0083,0.162,-0.015,-1.213,0 to 150,not normal; uniform-like; flat/uniform shape (kurtosis ~ -1.2)
+NOx,0.954,4.72e-37,0.0111,0.0219,-0.012,-1.214,0 to 250,not normal; not uniform; flat/uniform shape (kurtosis ~ -1.2)
+NH3,0.9548,8.84e-37,0.0065,0.423,-0.006,-1.2,0 to 50,not normal; uniform-like; flat/uniform shape (kurtosis ~ -1.2)
+CO,0.9557,1.72e-36,0.0037,0.965,0.004,-1.208,0 to 10,not normal; uniform-like; flat/uniform shape (kurtosis ~ -1.2)
+SO2,0.9563,2.72e-36,0.0077,0.223,0.005,-1.211,0 to 100,not normal; uniform-like; flat/uniform shape (kurtosis ~ -1.2)
+O3,0.9566,3.46e-36,0.0071,0.317,-0.002,-1.199,0 to 200,not normal; uniform-like; flat/uniform shape (kurtosis ~ -1.2)
+AQI,0.9513,7.15e-38,0.1889,0.0,-0.174,-1.194,26.9 to 500,not normal; not uniform; flat/uniform shape (kurtosis ~ -1.2)

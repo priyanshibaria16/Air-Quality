@@ -1,0 +1,67 @@
+single-column predictability of AQI (CV R^2):
+    PM2.5: +0.4427
+     PM10: +0.1115
+       NO: -0.1712
+      NO2: -0.1280
+      NOx: -0.1975
+      NH3: -0.0402
+       CO: -0.0892
+      SO2: -0.0821
+       O3: -0.1407
+
+pairs (top 8):
+  PM2.5 + PM10      : +0.9574
+  PM2.5 + O3        : +0.5054
+  PM2.5 + CO        : +0.4920
+  PM2.5 + SO2       : +0.4916
+  PM2.5 + NOx       : +0.4867
+  PM2.5 + NH3       : +0.4851
+  PM2.5 + NO2       : +0.4820
+  PM2.5 + NO        : +0.4797
+
+cumulative greedy forward selection:
+  + PM2.5   -> R^2 = 0.4427
+  + PM10    -> R^2 = 0.9574
+  + O3      -> R^2 = 0.9867
+  + CO      -> R^2 = 0.9949
+  + NO2     -> R^2 = 0.9969
+
+smallest informative set found: ['PM2.5', 'PM10', 'O3', 'CO', 'NO2']
+
+shape of the relationship (deciles of the first chosen column):
+                  count    mean     std
+_bin                                   
+(-0.001, 51.1]     1828  245.67  106.20
+(51.1, 99.5]       1826  249.30   95.91
+(99.5, 149.6]      1829  317.42   58.84
+(149.6, 200.0]     1825  356.36   36.34
+(200.0, 251.0]     1825  386.66   33.14
+(251.0, 301.84]    1826  429.23   19.18
+(301.84, 351.98]   1826  467.03   52.68
+(351.98, 400.22]   1827  241.47  103.48
+(400.22, 450.4]    1827  241.29  101.02
+(450.4, 499.9]     1826  240.83  104.50
+
+AQI mean by quintile of the two chosen columns:
+PM10      Q1     Q2     Q3     Q4     Q5
+PM2.5                                   
+Q1     174.9  186.0  249.5  387.7  226.1
+Q2     318.5  317.5  319.6  389.8  340.6
+Q3     401.4  401.3  403.5  419.5  414.4
+Q4     314.8  317.8  363.2  429.0  344.9
+Q5     171.8  178.6  251.3  385.7  222.6
+
+Decisive test - 'AQI is the larger of two sub-indices':
+If AQI = max(subindex(PM2.5), subindex(PM10)), then holding one pollutant
+near its minimum must make AQI a pure function of the other.
+  rows with PM2.5 in the lowest 5% (n=918): AQI vs PM10 alone -> CV R^2 = 0.8858
+  rows with PM10 in the lowest 5% (n=916): AQI vs PM2.5 alone -> CV R^2 = 0.9203
+
+Spread of AQI inside cells where BOTH PM values are almost identical
+(a deterministic rule implies a spread close to zero):
+  cells tested: 808
+  mean within-cell range (max-min): 45.50 AQI points
+  mean within-cell SD             : 15.18 AQI points
+  overall AQI SD                  : 113.89 AQI points
+
+saved: C:\Users\DELL\OneDrive\Desktop\Air Quality\data\processed\aqi_driver_probe.json

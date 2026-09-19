@@ -1,0 +1,14 @@
+Column,Type,Description,Missing Values,Missing %,Unique
+City,Categorical,Name of the monitored Indian city,0,0.0,5
+Datetime,Date (text in raw file),Observation date (daily record),0,0.0,3653
+PM2.5,Numeric,Fine particulate matter ≤ 2.5 µm concentration,0,0.0,4876
+PM10,Numeric,Inhalable particulate matter ≤ 10 µm concentration,0,0.0,5709
+NO,Numeric,Nitric oxide concentration,0,0.0,2000
+NO2,Numeric,Nitrogen dioxide concentration,0,0.0,1501
+NOx,Numeric,Total nitrogen oxides concentration,0,0.0,2498
+NH3,Numeric,Ammonia concentration,0,0.0,501
+CO,Numeric,Carbon monoxide concentration,0,0.0,1001
+SO2,Numeric,Sulphur dioxide concentration,0,0.0,1001
+O3,Numeric,Ozone concentration,0,0.0,2001
+AQI,Numeric,Air Quality Index as supplied by the dataset,0,0.0,3848
+AQI_Bucket,Categorical,Categorical AQI band derived from AQI by the data owner,0,0.0,6

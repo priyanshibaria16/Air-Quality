@@ -1,0 +1,25 @@
+Feature,Present,Dtype,Purpose
+Year,True,Int64,yearly trend comparison
+Month,True,Int64,monthly seasonality
+Month_Name,True,string,supporting BI attribute
+Quarter,True,Int64,supporting BI attribute
+Quarter_Label,True,str,supporting BI attribute
+Day,True,Int64,supporting BI attribute
+Day_of_Week,True,Int64,supporting BI attribute
+Day_Name,True,string,supporting BI attribute
+Week_of_Year,True,Int64,supporting BI attribute
+Is_Weekend,True,int64,weekday vs weekend behaviour
+Season,True,category,seasonal aggregation
+Year_Month,True,string,supporting BI attribute
+PM25_PM10_Ratio,True,float64,fine vs coarse particulate composition
+NO2_NOx_Ratio,True,float64,share of freshly emitted NO2 in NOx
+O3_PM10_Ratio,True,float64,supporting BI attribute
+Pollution_Index,True,float64,common 0-100 scale across pollutants (project index)
+Pollution_Index_Band,True,category,supporting BI attribute
+Pollutants_Above_City_Q3,True,int64,how many pollutants are simultaneously high
+City_Pollutant_Percentile,True,float64,supporting BI attribute
+AQI_Lag_1,True,float64,supporting BI attribute
+AQI_Change_1d,True,float64,supporting BI attribute
+AQI_Rolling_7,True,float64,smoothed trend for dashboards
+AQI_Rolling_30,True,float64,supporting BI attribute
+AQI_RollingStd_7,True,float64,supporting BI attribute

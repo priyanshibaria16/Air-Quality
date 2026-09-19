@@ -1,0 +1,17 @@
+{
+  "suspect_column": "AQI",
+  "present": true,
+  "target": "AQI_Bucket",
+  "without leaky column": {
+    "accuracy_%": 99.28,
+    "macro_F1": 0.7355,
+    "features_used": 9
+  },
+  "with leaky column": {
+    "accuracy_%": 99.96,
+    "macro_F1": 0.8276,
+    "features_used": 10
+  },
+  "accuracy_inflation_pp": 0.68,
+  "verdict": "including AQI inflates accuracy by 0.68 percentage points, so AQI is excluded from all reported models"
+}

@@ -1,0 +1,10 @@
+K,Inertia,Silhouette_Score,Clusters_Used,Evaluated_On
+2,150577.68,0.0838,2,"6000 rows (silhouette), 18265 rows (inertia)"
+3,142166.9,0.0728,3,"6000 rows (silhouette), 18265 rows (inertia)"
+4,135388.48,0.0745,4,"6000 rows (silhouette), 18265 rows (inertia)"
+5,130238.28,0.073,5,"6000 rows (silhouette), 18265 rows (inertia)"
+6,125960.17,0.0733,6,"6000 rows (silhouette), 18265 rows (inertia)"
+7,121974.05,0.075,7,"6000 rows (silhouette), 18265 rows (inertia)"
+8,118453.34,0.0776,8,"6000 rows (silhouette), 18265 rows (inertia)"
+9,115494.17,0.0754,9,"6000 rows (silhouette), 18265 rows (inertia)"
+10,112655.61,0.0767,10,"6000 rows (silhouette), 18265 rows (inertia)"

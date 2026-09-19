@@ -1,0 +1,13 @@
+stage,pollutant,cv_r2_for_AQI
+forward selection step 1,PM2.5,0.4935
+forward selection step 2,PM10,0.9588
+forward selection step 3,O3,0.9862
+single column,PM2.5,0.4935
+single column,PM10,0.1913
+single column,NH3,-0.045
+single column,SO2,-0.0744
+single column,CO,-0.0762
+single column,NO2,-0.0796
+single column,NO,-0.0866
+single column,O3,-0.0933
+single column,NOx,-0.1095

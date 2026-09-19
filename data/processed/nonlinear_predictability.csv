@@ -1,0 +1,2 @@
+target,n,features,tree_CV_R2,tree_CV_MAE,linear_R2,gap,verdict
+AQI,18265,"['PM2.5', 'PM10', 'NO', 'NO2', 'NOx', 'NH3', 'CO', 'SO2', 'O3']",0.9969,1.2114,0.0579,0.939,"the relationship is largely NON-LINEAR: a tree ensemble explains far more than linear regression / Pearson r, so a correlation matrix alone would understate it"

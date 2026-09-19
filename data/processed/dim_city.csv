@@ -1,0 +1,6 @@
+City,Record_Count,Distinct_Days,First_Observation,Last_Observation,Dominant_Cluster
+Bangalore,3653,3653,2015-01-01,2024-12-31,0
+Chennai,3653,3653,2015-01-01,2024-12-31,1
+Delhi,3653,3653,2015-01-01,2024-12-31,0
+Kolkata,3653,3653,2015-01-01,2024-12-31,1
+Mumbai,3653,3653,2015-01-01,2024-12-31,1

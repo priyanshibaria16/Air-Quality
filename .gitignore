@@ -1,0 +1,54 @@
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+build/
+dist/
+.venv/
+venv/
+env/
+
+# --- Jupyter ----------------------------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
+# keep executed notebooks in version control (they carry the real outputs),
+# but drop the transient kernel wiring
+*.ipynb_meta
+
+# --- Data: keep the raw file and the small summary tables -------------------
+# The raw dataset is small (< 2 MB) and is required for reproducibility, so it
+# is committed. Uncomment the next lines if your copy is large or licensed.
+# data/raw/*.csv
+data/raw/*.tmp
+data/**/*.parquet
+~$*.xlsx
+
+# --- Office / editor lock files ---------------------------------------------
+~$*
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Power BI ---------------------------------------------------------------
+*.pbix.log
+*.pbit.log
+AnalysisServicesWorkplace*/
+*.bak/
+**/Log.txt
+
+# --- Local run artefacts ----------------------------------------------------
+*.log
+notebook_run.log
+notebook_run.err
+install_log.txt
+pip_freeze.txt
+requirements.lock.txt
+
+# --- IDE --------------------------------------------------------------------
+.vscode/
+.idea/
+*.code-workspace

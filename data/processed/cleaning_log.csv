@@ -1,0 +1,44 @@
+Step,Action Performed,Method / Rule,Rows / Values Affected,Justification
+1,Duplicate removal,drop_duplicates() on the full record,0,"Checked for exact duplicates; none existed, so no rows were dropped."
+2,Uniqueness check,"duplicated(City, Datetime)",0,"Verified: one record per city per day, so the panel is balanced."
+3,Numeric coercion check,'PM2.5' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+4,Numeric coercion check,'PM10' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+5,Numeric coercion check,'NO' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+6,Numeric coercion check,'NO2' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+7,Numeric coercion check,'NOx' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+8,Numeric coercion check,'NH3' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+9,Numeric coercion check,'CO' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+10,Numeric coercion check,'SO2' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+11,Numeric coercion check,'O3' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+12,Numeric coercion check,'AQI' already fully numeric,0,Verified rather than assumed; nothing had to be converted.
+13,Impossible values,'PM2.5' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+14,Impossible values,'PM10' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+15,Impossible values,'NO' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+16,Impossible values,'NO2' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+17,Impossible values,'NOx' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+18,Impossible values,'NH3' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+19,Impossible values,'CO' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+20,Impossible values,'SO2' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+21,Impossible values,'O3' < 0 set to NaN,0,"A negative concentration cannot exist physically, so it is a recording error rather than an extreme pollution event."
+22,Categorical values,'City' complete - nothing filled,0,Verified from the data.
+23,Categorical values,'AQI_Bucket' complete - nothing filled,0,Verified from the data.
+24,Missing values,'PM2.5' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+25,Missing values,'PM10' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+26,Missing values,'NO' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+27,Missing values,'NO2' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+28,Missing values,'NOx' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+29,Missing values,'NH3' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+30,Missing values,'CO' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+31,Missing values,'SO2' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+32,Missing values,'O3' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+33,Missing values,'AQI' complete - no imputation needed,0,Verified from the data; no values were fabricated.
+34,Ordinal encoding,"'AQI_Bucket' cast to ordered category ['Severe', 'Very Poor', 'Poor', 'Moderate', 'Satisfactory', 'Good']",6,"AQI bands have a natural severity order, so models and charts sort them meaningfully instead of alphabetically."
+35,"Extreme values (flagged, kept)","IQR rule on 'PM2.5': bounds [-250.05, 751.95]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.
+36,"Extreme values (flagged, kept)","IQR rule on 'PM10': bounds [-299.75, 899.85]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.
+37,"Extreme values (flagged, kept)","IQR rule on 'NO': bounds [-100.00, 301.60]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.
+38,"Extreme values (flagged, kept)","IQR rule on 'NO2': bounds [-75.55, 226.45]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.
+39,"Extreme values (flagged, kept)","IQR rule on 'NOx': bounds [-125.60, 377.60]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.
+40,"Extreme values (flagged, kept)","IQR rule on 'NH3': bounds [-24.90, 75.10]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.
+41,"Extreme values (flagged, kept)","IQR rule on 'CO': bounds [-5.04, 15.04]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.
+42,"Extreme values (flagged, kept)","IQR rule on 'SO2': bounds [-51.65, 151.15]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.
+43,"Extreme values (flagged, kept)","IQR rule on 'O3': bounds [-99.10, 300.10]",0,Retained because an extreme reading may be a real pollution episode; deletion would erase exactly the events a BI dashboard exists to surface.

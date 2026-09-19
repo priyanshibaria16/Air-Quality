@@ -1,0 +1,7 @@
+AQI_Bucket,Sort_Order,Band_Lower_AQI,Band_Upper_AQI,Observed_Min_AQI,Observed_Max_AQI,Record_Count,Share_%,Colour
+Severe,1,401,500,401.0,500.0,5258,28.79,#7E0023
+Very Poor,2,301,400,301.0,400.0,5501,30.12,#F44336
+Poor,3,201,300,201.0,300.0,3129,17.13,#FF9800
+Moderate,4,101,200,101.0,200.0,4258,23.31,#FFFF00
+Satisfactory,5,51,100,51.0,99.9,113,0.62,#8BC34A
+Good,6,0,50,26.9,49.2,6,0.03,#00E400

@@ -1,0 +1,41 @@
+Model,Class,Precision,Recall,F1-Score,Support
+Baseline (prior),Good,0.0,0.0,0.0,2
+Baseline (prior),Moderate,0.0,0.0,0.0,1065
+Baseline (prior),Poor,0.0,0.0,0.0,782
+Baseline (prior),Satisfactory,0.0,0.0,0.0,28
+Baseline (prior),Severe,0.0,0.0,0.0,1315
+Baseline (prior),Very Poor,0.3011,1.0,0.4628,1375
+Baseline (prior),macro avg,0.0502,0.1667,0.0771,4567
+Baseline (prior),weighted avg,0.0906,0.3011,0.1393,4567
+Logistic Regression,Good,0.05,1.0,0.0952,2
+Logistic Regression,Moderate,0.3662,0.3869,0.3763,1065
+Logistic Regression,Poor,0.2627,0.3772,0.3097,782
+Logistic Regression,Satisfactory,0.0464,0.75,0.0873,28
+Logistic Regression,Severe,0.4505,0.343,0.3895,1315
+Logistic Regression,Very Poor,0.3152,0.1891,0.2364,1375
+Logistic Regression,macro avg,0.2485,0.5077,0.2491,4567
+Logistic Regression,weighted avg,0.3553,0.3155,0.3247,4567
+Decision Tree,Good,0.0,0.0,0.0,2
+Decision Tree,Moderate,0.9596,0.9596,0.9596,1065
+Decision Tree,Poor,0.9211,0.9552,0.9379,782
+Decision Tree,Satisfactory,0.3247,0.8929,0.4762,28
+Decision Tree,Severe,0.978,0.9445,0.9609,1315
+Decision Tree,Very Poor,0.9694,0.9455,0.9573,1375
+Decision Tree,macro avg,0.6921,0.7829,0.7153,4567
+Decision Tree,weighted avg,0.9569,0.9494,0.9522,4567
+Random Forest,Good,0.0,0.0,0.0,2
+Random Forest,Moderate,0.9869,0.9897,0.9883,1065
+Random Forest,Poor,0.9936,0.9974,0.9955,782
+Random Forest,Satisfactory,0.9375,0.5357,0.6818,28
+Random Forest,Severe,0.9947,1.0,0.9973,1315
+Random Forest,Very Poor,0.9956,0.9964,0.996,1375
+Random Forest,macro avg,0.8181,0.7532,0.7765,4567
+Random Forest,weighted avg,0.9922,0.9928,0.9921,4567
+Hist Gradient Boosting,Good,0.0,0.0,0.0,2
+Hist Gradient Boosting,Moderate,0.925,0.8808,0.9024,1065
+Hist Gradient Boosting,Poor,0.9028,0.8913,0.897,782
+Hist Gradient Boosting,Satisfactory,0.0779,0.2143,0.1143,28
+Hist Gradient Boosting,Severe,0.9266,0.9019,0.9141,1315
+Hist Gradient Boosting,Very Poor,0.8912,0.9229,0.9068,1375
+Hist Gradient Boosting,macro avg,0.6206,0.6352,0.6224,4567
+Hist Gradient Boosting,weighted avg,0.9059,0.8969,0.9009,4567

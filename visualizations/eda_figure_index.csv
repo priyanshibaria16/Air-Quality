@@ -1,0 +1,13 @@
+figure,path,exists
+01_aqi_distribution,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\01_aqi_distribution.png,True
+02_aqi_category_distribution,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\02_aqi_category_distribution.png,True
+03_city_avg_median_aqi,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\03_city_avg_median_aqi.png,True
+04_city_aqi_boxplot,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\04_city_aqi_boxplot.png,True
+05_pollutant_distributions,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\05_pollutant_distributions.png,True
+06_aqi_trend_time,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\06_aqi_trend_time.png,True
+07_monthly_aqi,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\07_monthly_aqi.png,True
+08_yearly_aqi,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\08_yearly_aqi.png,True
+09_seasonal_aqi,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\09_seasonal_aqi.png,True
+10_pm25_vs_pm10,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\10_pm25_vs_pm10.png,True
+11_weekday_aqi,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\11_weekday_aqi.png,True
+12_city_pollutant_heatmap,C:\Users\DELL\OneDrive\Desktop\Air Quality\visualizations\eda\12_city_pollutant_heatmap.png,True

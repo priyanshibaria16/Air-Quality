@@ -1,0 +1,345 @@
+/* ==========================================================================
+   Air Quality & Pollution Intelligence - DAX measure library
+   --------------------------------------------------------------------------
+   Paste this whole file into Power BI Desktop:
+     Modeling tab > New Measure (create ONE blank measure first, e.g.
+     "Observations"), then open the Tabular Editor / the formula bar and add
+     the rest, OR copy each block into "New Measure" one by one.
+   Easiest route: Home > Enter Data is NOT needed - all measures live in one
+   dedicated empty table called `_Measures` (created in step 4 of the guide).
+
+   Every column referenced below exists in the exported CSVs in
+   data/processed/ - verified against their headers, not assumed.
+   Table names used:
+     FACT_AirQuality      <- air_quality_cleaned.csv
+     DIM_Date             <- dim_date.csv          (marked as a date table)
+     DIM_City             <- dim_city.csv
+     DIM_Bucket           <- dim_bucket.csv
+     MODEL_COMPARISON     <- model_comparison.csv
+     CLASSIFICATION_PER_CLASS <- classification_per_class.csv
+     ANOMALY_BY_CITY / CLUSTER_PROFILE / INSIGHTS as documented
+
+   Rules followed:
+     * DIVIDE() everywhere, never "/" - never returns a divide-by-zero error
+     * measures only in the fact/dimension tables' measures, no calculated
+       columns for aggregations (keeps the model small and filter-aware)
+     * ALLSELECTED() is used for share-of-visible-total so slicers work
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. VOLUME / COVERAGE  (Executive Overview cards)
+   -------------------------------------------------------------------------- */
+Observations :=
+COUNTROWS ( FACT_AirQuality )
+
+Cities Covered :=
+DISTINCTCOUNT ( FACT_AirQuality[City] )
+
+Days Covered :=
+DISTINCTCOUNT ( FACT_AirQuality[Date] )
+
+Coverage Start :=
+MIN ( FACT_AirQuality[Date] )
+
+Coverage End :=
+MAX ( FACT_AirQuality[Date] )
+
+/* "Complete panel?" compares distinct city-days with observations: if the two
+   are equal every city has a record for every day in the current filter. */
+City-Days Expected :=
+DISTINCTCOUNT ( FACT_AirQuality[City] ) * DISTINCTCOUNT ( FACT_AirQuality[Date] )
+
+Panel Completeness % :=
+DIVIDE ( [Observations], [City-Days Expected] )
+
+
+/* --------------------------------------------------------------------------
+   2. AQI MEASURES
+   -------------------------------------------------------------------------- */
+Avg AQI :=
+AVERAGE ( FACT_AirQuality[AQI] )
+
+Median AQI :=
+MEDIAN ( FACT_AirQuality[AQI] )
+
+Max AQI :=
+MAX ( FACT_AirQuality[AQI] )
+
+Min AQI :=
+MIN ( FACT_AirQuality[AQI] )
+
+StdDev AQI :=
+STDEV.P ( FACT_AirQuality[AQI] )
+
+/* Worst-case share, using the categories exactly as supplied in the data. */
+Severe or Very Poor Days :=
+COUNTROWS (
+    FILTER ( FACT_AirQuality, FACT_AirQuality[AQI_Bucket] IN { "Severe", "Very Poor" } )
+)
+
+Severe or Very Poor Share % :=
+DIVIDE ( [Severe or Very Poor Days], [Observations] )
+
+Good or Satisfactory Days :=
+COUNTROWS (
+    FILTER ( FACT_AirQuality, FACT_AirQuality[AQI_Bucket] IN { "Good", "Satisfactory" } )
+)
+
+Good or Satisfactory Share % :=
+DIVIDE ( [Good or Satisfactory Days], [Observations] )
+
+/* Records per AQI category - drives the category bar chart without a
+   relationship to DIM_Bucket being needed for the measure itself. */
+Records in Current Bucket :=
+CALCULATE ( [Observations], ALLEXCEPT ( FACT_AirQuality, FACT_AirQuality[AQI_Bucket] ) )
+
+Share of Visible Total % :=
+DIVIDE ( [Observations], CALCULATE ( [Observations], ALLSELECTED ( FACT_AirQuality ) ) )
+
+
+/* --------------------------------------------------------------------------
+   3. POLLUTANT MEASURES (column names with dots are legal inside [])
+   -------------------------------------------------------------------------- */
+Avg PM2.5 :=
+AVERAGE ( FACT_AirQuality[PM2.5] )
+
+Avg PM10 :=
+AVERAGE ( FACT_AirQuality[PM10] )
+
+Avg NO :=
+AVERAGE ( FACT_AirQuality[NO] )
+
+Avg NO2 :=
+AVERAGE ( FACT_AirQuality[NO2] )
+
+Avg NOx :=
+AVERAGE ( FACT_AirQuality[NOx] )
+
+Avg NH3 :=
+AVERAGE ( FACT_AirQuality[NH3] )
+
+Avg CO :=
+AVERAGE ( FACT_AirQuality[CO] )
+
+Avg SO2 :=
+AVERAGE ( FACT_AirQuality[SO2] )
+
+Avg O3 :=
+AVERAGE ( FACT_AirQuality[O3] )
+
+/* PM2.5 / PM10 share of total particulate mass - a coarse indicator of whether
+   the fraction is fine (combustion) or coarse (dust). */
+Fine Particle Fraction :=
+DIVIDE ( [Avg PM2.5], [Avg PM10] )
+
+
+/* --------------------------------------------------------------------------
+   4. THRESHOLD MEASURES
+   "PM25 Limit" is the what-if parameter created in step 5 of the guide. The
+   default in that parameter (60 ug/m3) is the 24-hour PM2.5 value used by
+   India's National Ambient Air Quality Standards; the parameter exists so the
+   number is visible and changeable instead of buried in a visual.
+   -------------------------------------------------------------------------- */
+PM25 Limit Value :=
+SELECTEDVALUE ( 'PM25 Limit'[PM25 Limit], 60 )
+
+Days PM2.5 Above Limit :=
+COUNTROWS (
+    FILTER ( FACT_AirQuality, FACT_AirQuality[PM2.5] > [PM25 Limit Value] )
+)
+
+Days PM2.5 Above Limit % :=
+DIVIDE ( [Days PM2.5 Above Limit], [Observations] )
+
+Days AQI Above 400 :=
+COUNTROWS ( FILTER ( FACT_AirQuality, FACT_AirQuality[AQI] > 400 ) )
+
+
+/* --------------------------------------------------------------------------
+   5. DATA-MINING OUTPUTS (clustering, anomaly detection)
+   -------------------------------------------------------------------------- */
+Clusters In Use :=
+CALCULATE ( DISTINCTCOUNT ( FACT_AirQuality[Cluster] ), ALLSELECTED ( FACT_AirQuality ) )
+
+Records in Current Cluster :=
+CALCULATE ( [Observations], ALLEXCEPT ( FACT_AirQuality, FACT_AirQuality[Cluster] ) )
+
+Anomaly Records :=
+SUM ( FACT_AirQuality[Anomaly] )
+
+Anomaly Rate % :=
+DIVIDE ( [Anomaly Records], [Observations] )
+
+/* The anomaly flag comes from Isolation Forest with contamination configured at
+   5%. Over the whole dataset the rate must equal the configured value; slicers
+   make the local deviations visible, which is the interesting part. */
+Configured Contamination % :=
+0.05
+
+Extreme PM Episodes :=
+SUM ( FACT_AirQuality[Is_Extreme_PM_Episode] )
+
+Extreme PM Episode Rate % :=
+DIVIDE ( [Extreme PM Episodes], [Observations] )
+
+Most Common Cluster :=
+CALCULATE (
+    CONCATENATEX ( TOPN ( 1, VALUES ( FACT_AirQuality[Cluster] ), [Observations], DESC ),
+        FACT_AirQuality[Cluster] ),
+    ALLSELECTED ( FACT_AirQuality )
+)
+
+
+/* --------------------------------------------------------------------------
+   6. TIME INTELLIGENCE  (requires DIM_Date marked as a date table)
+   -------------------------------------------------------------------------- */
+Avg AQI Previous Year :=
+CALCULATE ( [Avg AQI], SAMEPERIODLASTYEAR ( DIM_Date[Date] ) )
+
+YoY AQI Change :=
+[Avg AQI] - [Avg AQI Previous Year]
+
+YoY AQI Change % :=
+DIVIDE ( [YoY AQI Change], [Avg AQI Previous Year] )
+
+Avg AQI 30-Day Moving Average :=
+AVERAGEX (
+    DATESINPERIOD ( DIM_Date[Date], MAX ( DIM_Date[Date] ), -30, DAY ),
+    [Avg AQI]
+)
+
+Avg AQI Year to Date :=
+TOTALYTD ( [Avg AQI], DIM_Date[Date] )
+
+/* Trend arrow for conditional formatting: -1 falling, 0 flat, +1 rising. */
+AQI Trend Direction :=
+SIGN ( [YoY AQI Change] )
+
+
+/* --------------------------------------------------------------------------
+   7. COMPARISON AND RANKING
+   -------------------------------------------------------------------------- */
+Avg AQI All Cities :=
+CALCULATE ( [Avg AQI], REMOVEFILTERS ( DIM_City ) )
+
+Variance vs Overall AQI :=
+[Avg AQI] - [Avg AQI All Cities]
+
+Worst City By Avg AQI :=
+CONCATENATEX (
+    TOPN ( 1, VALUES ( DIM_City[City] ), [Avg AQI], DESC ),
+    DIM_City[City]
+)
+
+Best City By Avg AQI :=
+CONCATENATEX (
+    TOPN ( 1, VALUES ( DIM_City[City] ), [Avg AQI], ASC ),
+    DIM_City[City]
+)
+
+City Rank By Avg AQI :=
+RANKX ( ALLSELECTED ( DIM_City[City] ), [Avg AQI], , DESC, DENSE )
+
+Worst Month By Avg AQI :=
+CONCATENATEX (
+    TOPN ( 1, VALUES ( DIM_Date[Month_Name] ), [Avg AQI], DESC ),
+    DIM_Date[Month_Name]
+)
+
+Is Above Average ? :=
+IF ( [Avg AQI] > [Avg AQI All Cities], "Above", "Below" )
+
+
+/* --------------------------------------------------------------------------
+   8. MODEL / CLASSIFICATION KPIs
+   MODEL_COMPARISON and CLASSIFICATION_PER_CLASS are NOT related to the fact
+   table (they describe the models, not the days), so they must be read with
+   plain aggregates - a relationship here would multiply rows.
+   -------------------------------------------------------------------------- */
+/* MODEL_COMPARISON[Model] values as produced by the pipeline:
+   "Random Forest", "Decision Tree", "Hist Gradient Boosting",
+   "Logistic Regression", "Baseline (prior)" - the baseline is the most
+   frequent class, so any accuracy claim must be compared with it. */
+Best Model Accuracy % :=
+MAX ( MODEL_COMPARISON[Accuracy_%] )
+
+Best Model Macro F1 :=
+MAX ( MODEL_COMPARISON[F1_macro] )
+
+Baseline Accuracy % :=
+MAXX (
+    FILTER ( MODEL_COMPARISON, MODEL_COMPARISON[Model] = "Baseline (prior)" ),
+    MODEL_COMPARISON[Accuracy_%]
+)
+
+Lift over Baseline (pp) :=
+MAX ( MODEL_COMPARISON[Lift_over_Baseline_pp] )
+
+/* CLASSIFICATION_PER_CLASS also contains the "macro avg" and "weighted avg"
+   summary rows produced by scikit-learn, so per-class visuals must exclude
+   them; [Support] is the number of test records in the class. */
+Per-Class Recall :=
+AVERAGE ( CLASSIFICATION_PER_CLASS[Recall] )
+
+Per-Class Precision :=
+AVERAGE ( CLASSIFICATION_PER_CLASS[Precision] )
+
+Per-Class F1 :=
+AVERAGE ( CLASSIFICATION_PER_CLASS[F1-Score] )
+
+Test Records in Class :=
+SUM ( CLASSIFICATION_PER_CLASS[Support] )
+
+Model Rows Visible :=
+COUNTROWS ( MODEL_COMPARISON )
+
+
+/* --------------------------------------------------------------------------
+   9. NARRATION
+   Titles that update with the slicers, so every page states its own conclusion.
+   -------------------------------------------------------------------------- */
+Page 1 Title Context :=
+"Cities: " & [Cities Covered]
+    & "  |  Days: " & FORMAT ( [Days Covered], "#,0" )
+    & "  |  Avg AQI: " & FORMAT ( [Avg AQI], "0.0" )
+    & "  |  Severe/Very Poor: " & FORMAT ( [Severe or Very Poor Share %], "0.0%" )
+
+Anomaly Caption :=
+FORMAT ( [Anomaly Records], "#,0" )
+    & " of " & FORMAT ( [Observations], "#,0" )
+    & " records (" & FORMAT ( [Anomaly Rate %], "0.0%" )
+    & ") carry the Isolation Forest flag in the current selection"
+
+Leakage Note :=
+"AQI is excluded from the AQI_Bucket classifier (the bucket is a deterministic "
+    & "function of AQI - verified in notebook 02), and AQI_Bucket is excluded "
+    & "from AQI analyses for the same reason."
+
+
+/* --------------------------------------------------------------------------
+   10. MEASURE SWITCHER (for the single "select a metric" line chart)
+   'Measure Selector' is the disconnected table created in step 5.
+   -------------------------------------------------------------------------- */
+Selected Metric Value :=
+SWITCH (
+    SELECTEDVALUE ( 'Measure Selector'[Measure] ),
+    "AQI", [Avg AQI],
+    "PM2.5", [Avg PM2.5],
+    "PM10", [Avg PM10],
+    "NO2", [Avg NO2],
+    "CO", [Avg CO],
+    "SO2", [Avg SO2],
+    "O3", [Avg O3],
+    "Anomaly Rate %", [Anomaly Rate %],
+    [Avg AQI]
+)
+
+Selected Metric Unit :=
+SWITCH (
+    SELECTEDVALUE ( 'Measure Selector'[Measure] ),
+    "AQI", "index",
+    "CO", "mg/m3 (as supplied)",
+    "Anomaly Rate %", "% of records",
+    "ug/m3 (as supplied)"
+)
