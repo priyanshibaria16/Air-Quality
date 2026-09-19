@@ -47,6 +47,9 @@ notebook_run.err
 install_log.txt
 pip_freeze.txt
 requirements.lock.txt
+# leftovers of an earlier tools/smoke_docx.py that wrote into report/;
+# the tool now writes to the system temp directory instead
+report/_smoke.*
 
 # --- IDE --------------------------------------------------------------------
 .vscode/

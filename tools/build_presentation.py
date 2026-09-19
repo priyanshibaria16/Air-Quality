@@ -229,7 +229,7 @@ def build(r: dict) -> Path:
     best_name = str(best["Model"])
     best_acc = R.n(best["Accuracy_%"])
     best_f1 = R.n(best["F1_macro"], 4)
-    baseline = R.n(comp.loc[comp["Model"].str.startswith("Baseline"), "Accuracy_"]
+    baseline = R.n(comp.loc[comp["Model"].str.startswith("Baseline"), "Accuracy_%"]
                    .iloc[0])
     lift = R.n(best["Lift_over_Baseline_pp"])
     k = R.n(cl["choice"]["chosen_K"], 0)
@@ -255,6 +255,8 @@ def build(r: dict) -> Path:
     spread = R.n(avg_aqi.max() - avg_aqi.min())
     viz = C.VIZ_DIR
     ins = pd.DataFrame(r["insights"])
+    # counted from the file, so the deck and the report cannot disagree about it
+    measures = R.n(R.dax_measure_count(), 0)
 
     # 1 - Title -------------------------------------------------------------- #
     s = prs.slides.add_slide(prs.slide_layouts[6])
@@ -450,8 +452,9 @@ def build(r: dict) -> Path:
         ("Silhouette near 0.08 means weak separation",
          "the groups are a description of this file, not pollution 'regimes'"),
         ("PCA is used for the picture only",
-         "clustering runs on all nine scaled columns; the two components are ~"
-         + R.n(100 * sum(cl["pca_explained_variance"]), 1) + "% of variance"),
+         "clustering runs on all nine scaled columns; the two plotted components carry "
+         "just " + R.n(100 * sum(cl["pca_explained_variance"]), 1)
+         + "% of the variance, so the scatter is illustrative"),
     ], left=7.05, top=1.7, width=5.8, size=12)
     notes(s, "Expect to be asked why you did not just take the elbow. Answer: the two "
              "criteria disagreed and the silhouette is weak, so the conservative k won.",
@@ -512,7 +515,7 @@ def build(r: dict) -> Path:
     ], left=0.55, top=1.7, width=12.25, font=11)
     bullets(s, [
         "Fact: air_quality_cleaned.csv; dimensions: dim_date, dim_city, dim_bucket",
-        "57 DAX measures documented in dashboard/DAX_measures.dax and "
+        measures + " DAX measures documented in dashboard/DAX_measures.dax and "
         "dashboard/KPI_DEFINITIONS.md",
         "Slicers (city, year, month, season, category) plus a what-if limit parameter",
         "Thresholds cite CPCB bands - verified to reproduce AQI_Bucket on 100% of rows",
